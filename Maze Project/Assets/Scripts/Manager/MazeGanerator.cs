@@ -9,6 +9,9 @@ public class MazeGanerator : MonoBehaviour
     /// <summary> 縦横のサイズ　※奇数 </summary>
     [Header("縦横のサイズ ※奇数")]
     [SerializeField] int mazeSize = 5;
+    /// <summary> スタート地点とゴール地点のY軸の値調整用 </summary>
+    [Header("スタート地点とゴール地点のY軸の値調整用")]
+    [SerializeField] float startGoalPosY = 0.5f;
     /// <summary> 壁用のオブジェクト </summary>
     [Header("壁用のオブジェクト")]
     [SerializeField] GameObject wall = null;
@@ -22,6 +25,7 @@ public class MazeGanerator : MonoBehaviour
     [Header("ゴール地点に配置するオブジェクト")]
     [SerializeField] GameObject goal = null;
     
+    //内部パラメーター
     //セルの種類
     private enum CellType { Wall,Path };
     private CellType[,] cells;
@@ -52,8 +56,8 @@ public class MazeGanerator : MonoBehaviour
         BuildMaze();
 
         //スタート地点とゴール地点にオブジェクトを配置する
-        var startObj = Instantiate(start, new Vector3(startPos.x, 0, startPos.y), Quaternion.identity);
-        var goalObj = Instantiate(goal, new Vector3(goalPos.x, 0, goalPos.y), Quaternion.identity);
+        var startObj = Instantiate(start, new Vector3(startPos.x, startGoalPosY, startPos.y), Quaternion.identity);
+        var goalObj = Instantiate(goal, new Vector3(goalPos.x, startGoalPosY, goalPos.y), Quaternion.identity);
 
         startObj.transform.parent = this.transform;
         goalObj.transform.parent = this.transform;
