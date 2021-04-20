@@ -290,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: 20, z: 10}
+  m_LocalPosition: {x: 7.5, y: 20, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -326,10 +326,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazeSize: 15
+  startGoalPosY: -0.5
   wall: {fileID: 8468082971760766642, guid: 5c3196c0302a7af44b96eb28cc700b7f, type: 3}
-  floor: {fileID: 7229575223469280995, guid: aabab817aa8c7264c98bb126f43d94b1, type: 3}
-  start: {fileID: 3370176126114665517, guid: 6a9545cf75cba9c448c537a8bd2da7b3, type: 3}
-  goal: {fileID: 8274667664319848668, guid: ff1c45837e95b964fa1663ab3633893e, type: 3}
+  floor: {fileID: 2700949453211661008, guid: aabab817aa8c7264c98bb126f43d94b1, type: 3}
+  start: {fileID: 2674592792945688180, guid: 6a9545cf75cba9c448c537a8bd2da7b3, type: 3}
+  goal: {fileID: 8486946090963292576, guid: ff1c45837e95b964fa1663ab3633893e, type: 3}
 --- !u!4 &2059658913
 Transform:
   m_ObjectHideFlags: 0
