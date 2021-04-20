@@ -16,9 +16,10 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] float _Speed = 1f;
     /// <summary> 参照しているクラスの変数 </summary>
     private CharacterController _CharacterController = null;
-    private Vector3 _Direction;
+    /// <summary> RigidBodyの変数 </summary>
     private Rigidbody _Rb = null;
-
+    private Vector3 _Direction;
+    
     private void Start()
     {
         _CharacterController = GetComponent<CharacterController>();
@@ -27,7 +28,7 @@ public class PlayerContoller : MonoBehaviour
 
     private void Update()
     {
-        //
+        //TODO: 後で書く
         if (_Direction != new Vector3(0, 0, 0))
         {
             transform.localRotation = Quaternion.LookRotation(_Direction);
@@ -38,7 +39,7 @@ public class PlayerContoller : MonoBehaviour
 
     public void FixedUpdate()
     {
-        //
+        //TODO: 後で書く
         _Direction = Vector3.forward * _DynamicJoystick.Vertical + Vector3.right * _DynamicJoystick.Horizontal;
         _Rb.AddForce(_Direction * _Speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
