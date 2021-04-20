@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 2059658913}
   - component: {fileID: 2059658912}
   m_Layer: 0
-  m_Name: MazeGnerator
+  m_Name: MazeGanerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
