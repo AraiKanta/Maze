@@ -8,22 +8,22 @@ public class MazeGanerator : MonoBehaviour
 {
     /// <summary> 縦横のサイズ　※奇数 </summary>
     [Header("縦横のサイズ ※奇数")]
-    [SerializeField] int mazeSize = 5;
+    [SerializeField] int _MazeSize = 5;
     /// <summary> スタート地点とゴール地点のY軸の値調整用 </summary>
     [Header("スタート地点とゴール地点のY軸の値調整用")]
-    [SerializeField] float startGoalPosY = 0.5f;
+    [SerializeField] float _StartGoalPosY = 0.5f;
     /// <summary> 壁用のオブジェクト </summary>
     [Header("壁用のオブジェクト")]
-    [SerializeField] GameObject wall = null;
+    [SerializeField] GameObject _Wall = null;
     /// <summary> 床用のオブジェクト </summary>
     [Header("床用のオブジェクト")]
-    [SerializeField] GameObject floor = null;
+    [SerializeField] GameObject _Floor = null;
     /// <summary> スタート地点に配置するオブジェクト </summary>
     [Header("スタート地点に配置するオブジェクト")]
-    [SerializeField] GameObject start = null;
+    [SerializeField] GameObject _Start = null;
     /// <summary> ゴール地点に配置するオブジェクト </summary>
     [Header("ゴール地点に配置するオブジェクト")]
-    [SerializeField] GameObject goal = null;
+    [SerializeField] GameObject _Goal = null;
     
     //内部パラメーター
     //セルの種類
@@ -38,7 +38,7 @@ public class MazeGanerator : MonoBehaviour
     void Start()
     {
         //マップの初期化
-        cells = new CellType[mazeSize, mazeSize];
+        cells = new CellType[_MazeSize, _MazeSize];
         //スタート地点の取得
         startPos = GetStartPosition();
         //初回はゴール地点を設定
@@ -46,7 +46,7 @@ public class MazeGanerator : MonoBehaviour
 
         //通路生成し袋小路を減らす
         var tmpStart = goalPos;
-        for (int i = 0; i < mazeSize * 5; i++)
+        for (int i = 0; i < _MazeSize * 5; i++)
         {
             MakeMapInfo(tmpStart);
             tmpStart = GetStartPosition();
@@ -56,8 +56,8 @@ public class MazeGanerator : MonoBehaviour
         BuildMaze();
 
         //スタート地点とゴール地点にオブジェクトを配置する
-        var startObj = Instantiate(start, new Vector3(startPos.x, startGoalPosY, startPos.y), Quaternion.identity);
-        var goalObj = Instantiate(goal, new Vector3(goalPos.x, startGoalPosY, goalPos.y), Quaternion.identity);
+        var startObj = Instantiate(_Start, new Vector3(startPos.x, _StartGoalPosY, startPos.y), Quaternion.identity);
+        var goalObj = Instantiate(_Goal, new Vector3(goalPos.x, _StartGoalPosY, goalPos.y), Quaternion.identity);
 
         startObj.transform.parent = this.transform;
         goalObj.transform.parent = this.transform;
@@ -70,14 +70,14 @@ public class MazeGanerator : MonoBehaviour
     private Vector2Int GetStartPosition() 
     {
         //ランダムにX,Yを設定する
-        int randomX = Random.Range(0, mazeSize);
-        int randomY = Random.Range(0, mazeSize);
+        int randomX = Random.Range(0, _MazeSize);
+        int randomY = Random.Range(0, _MazeSize);
 
         //X,Yが偶数になるなで繰り返す
         while (!(randomX % 2 == 0 && randomY % 2 == 0))
         {
-            randomX = Mathf.RoundToInt(Random.Range(0, mazeSize));
-            randomY = Mathf.RoundToInt(Random.Range(0, mazeSize));
+            randomX = Mathf.RoundToInt(Random.Range(0, _MazeSize));
+            randomY = Mathf.RoundToInt(Random.Range(0, _MazeSize));
         }
 
         return new Vector2Int(randomX, randomY);
@@ -149,7 +149,7 @@ public class MazeGanerator : MonoBehaviour
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
-    private bool IsOutOfBounds(int x, int y) => (x < 0 || y < 0 || x >= mazeSize || y >= mazeSize);
+    private bool IsOutOfBounds(int x, int y) => (x < 0 || y < 0 || x >= _MazeSize || y >= _MazeSize);
 
     /// <summary>
     /// パラメーターに応じてオブジェクトを生成する
@@ -157,19 +157,19 @@ public class MazeGanerator : MonoBehaviour
     private void BuildMaze() 
     {
         //縦横1マスずつループさせて外壁にする
-        for (int i = -1; i <= mazeSize; i++)
+        for (int i = -1; i <= _MazeSize; i++)
         {
-            for (int k = -1; k <= mazeSize; k++)
+            for (int k = -1; k <= _MazeSize; k++)
             {
                 //範囲外又は壁のオブジェクトを生成する
                 if (IsOutOfBounds(i,k) || cells[i,k] == CellType.Wall)
                 {
-                    var wallObj = Instantiate(wall, new Vector3(i, 0, k), Quaternion.identity);
+                    var wallObj = Instantiate(_Wall, new Vector3(i, 0, k), Quaternion.identity);
                     wallObj.transform.parent = this.transform;
                 }
 
                 //全ての場所に床オブジェクトを生成する
-                var floorObj = Instantiate(floor, new Vector3(i, -1, k), Quaternion.identity);
+                var floorObj = Instantiate(_Floor, new Vector3(i, -1, k), Quaternion.identity);
                 floorObj.transform.parent = this.transform;
             }
         }
