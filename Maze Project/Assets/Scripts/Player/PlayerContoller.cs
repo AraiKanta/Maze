@@ -18,6 +18,7 @@ public class PlayerContoller : MonoBehaviour
     private CharacterController _CharacterController = null;
     /// <summary> RigidBodyの変数 </summary>
     private Rigidbody _Rb = null;
+
     private Vector3 _Direction;
     
     private void Start()
