@@ -8,23 +8,23 @@ public class MazeGanerator : MonoBehaviour
 {
     /// <summary> 縦横のサイズ　※奇数 </summary>
     [Header("縦横のサイズ ※奇数")]
-    [SerializeField] int mazeSize = 5;
+    [SerializeField] int m_MazeSize = 5;
     /// <summary> プレイヤーのY軸の値調整用の変数 </summary>
-    private float playerPosY = -0.5f;
+    private float m_PlayerPosY = -0.5f;
     /// <summary> ゴール地点のY軸の値調整用の変数 </summary>
-    private float goalPosY = -0.5f;
+    private float m_GoalPosY = -0.5f;
     /// <summary> 壁用のオブジェクトの変数 </summary>
     [Header("壁用のオブジェクト")]
-    [SerializeField] GameObject _Wall = null;
+    [SerializeField] GameObject m_Wall = null;
     /// <summary> 床用のオブジェクトの変数 </summary>
     [Header("床用のオブジェクト")]
-    [SerializeField] GameObject _Floor = null;
+    [SerializeField] GameObject m_Floor = null;
     /// <summary> プレイヤープレハブの変数 </summary>
     [Header("プレイヤープレハブ")]
-    [SerializeField] GameObject _Player = null;
+    [SerializeField] GameObject m_Player = null;
     /// <summary> ゴール地点に配置するオブジェクトの変数 </summary>
     [Header("ゴール地点に配置するオブジェクト")]
-    [SerializeField] GameObject _Goal = null;
+    [SerializeField] GameObject m_Goal = null;
     
     //内部パラメーター
     //セルの種類
@@ -32,22 +32,22 @@ public class MazeGanerator : MonoBehaviour
     private CellType[,] cells;
 
     /// <summary> スタートの座標 </summary>
-    private Vector2Int playerPos;
+    private Vector2Int m_PlayerPos;
     /// <summary> ゴールの座標 </summary>
-    private Vector2Int goalPos;
+    private Vector2Int m_GoalPos;
 
     void Start()
     {
         //マップの初期化
-        cells = new CellType[mazeSize, mazeSize];
+        cells = new CellType[m_MazeSize, m_MazeSize];
         //スタート地点の取得
-        playerPos = GetPlayerPosition();
+        m_PlayerPos = GetPlayerPosition();
         //初回はゴール地点を設定
-        goalPos = MakeMapInfo(playerPos);
+        m_GoalPos = MakeMapInfo(m_PlayerPos);
 
         //通路生成し袋小路を減らす
-        var tmpStart = goalPos;
-        for (int i = 0; i < mazeSize * 5; i++)
+        var tmpStart = m_GoalPos;
+        for (int i = 0; i < m_MazeSize * 5; i++)
         {
             MakeMapInfo(tmpStart);
             tmpStart = GetPlayerPosition();
@@ -57,8 +57,8 @@ public class MazeGanerator : MonoBehaviour
         BuildMaze();
 
         //プレイヤーの地点とゴール地点にオブジェクトを配置する
-        var startObj = Instantiate(_Player, new Vector3(playerPos.x, playerPosY, playerPos.y), Quaternion.identity);
-        var goalObj = Instantiate(_Goal, new Vector3(goalPos.x, goalPosY, goalPos.y), Quaternion.identity);
+        var startObj = Instantiate(m_Player, new Vector3(m_PlayerPos.x, m_PlayerPosY, m_PlayerPos.y), Quaternion.identity);
+        var goalObj = Instantiate(m_Goal, new Vector3(m_GoalPos.x, m_GoalPosY, m_GoalPos.y), Quaternion.identity);
 
         startObj.transform.parent = this.transform;
         goalObj.transform.parent = this.transform;
@@ -71,14 +71,14 @@ public class MazeGanerator : MonoBehaviour
     private Vector2Int GetPlayerPosition() 
     {
         //ランダムにX,Yを設定する
-        int randomX = Random.Range(0, mazeSize);
-        int randomY = Random.Range(0, mazeSize);
+        int randomX = Random.Range(0, m_MazeSize);
+        int randomY = Random.Range(0, m_MazeSize);
 
         //X,Yが偶数になるなで繰り返す
         while (!(randomX % 2 == 0 && randomY % 2 == 0))
         {
-            randomX = Mathf.RoundToInt(Random.Range(0, mazeSize));
-            randomY = Mathf.RoundToInt(Random.Range(0, mazeSize));
+            randomX = Mathf.RoundToInt(Random.Range(0, m_MazeSize));
+            randomY = Mathf.RoundToInt(Random.Range(0, m_MazeSize));
         }
 
         return new Vector2Int(randomX, randomY);
@@ -150,7 +150,7 @@ public class MazeGanerator : MonoBehaviour
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
-    private bool IsOutOfBounds(int x, int y) => (x < 0 || y < 0 || x >= mazeSize || y >= mazeSize);
+    private bool IsOutOfBounds(int x, int y) => (x < 0 || y < 0 || x >= m_MazeSize || y >= m_MazeSize);
 
     /// <summary>
     /// パラメーターに応じてオブジェクトを生成する
@@ -158,19 +158,19 @@ public class MazeGanerator : MonoBehaviour
     private void BuildMaze() 
     {
         //縦横1マスずつループさせて外壁にする
-        for (int i = -1; i <= mazeSize; i++)
+        for (int i = -1; i <= m_MazeSize; i++)
         {
-            for (int k = -1; k <= mazeSize; k++)
+            for (int k = -1; k <= m_MazeSize; k++)
             {
                 //範囲外又は壁のオブジェクトを生成する
                 if (IsOutOfBounds(i,k) || cells[i,k] == CellType.Wall)
                 {
-                    var wallObj = Instantiate(_Wall, new Vector3(i, 0, k), Quaternion.identity);
+                    var wallObj = Instantiate(m_Wall, new Vector3(i, 0, k), Quaternion.identity);
                     wallObj.transform.parent = this.transform;
                 }
 
                 //全ての場所に床オブジェクトを生成する
-                var floorObj = Instantiate(_Floor, new Vector3(i, -1, k), Quaternion.identity);
+                var floorObj = Instantiate(m_Floor, new Vector3(i, -1, k), Quaternion.identity);
                 floorObj.transform.parent = this.transform;
             }
         }
