@@ -6,10 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
+    /// <summary> フェードさせるまでの時間 </summary>
+    [Header("フェードさせるまでの時間")]
     [SerializeField] readonly float m_fadeTime = 0.4f;
+    /// <summary> フェードしている時間 </summary>
+    [Header("フェードしている時間")]
     [SerializeField] float m_fadeDletaTime = 0;
+    /// <summary> フェードさせるImage </summary>
+    [Header("フェードさせるImage")]
     [SerializeField] Image m_fadeImage = null; 
     
+    /// <summary>
+    /// フェードインのコルーチン
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FadeInCoroutine()
     {
         float m_alpha = 1;
@@ -31,6 +41,11 @@ public class SceneTransitionManager : MonoBehaviour
         while (this.m_fadeDletaTime <= this.m_fadeTime);
     }
 
+    /// <summary>
+    /// フェードアウトのコルーチン
+    /// </summary>
+    /// <param name="nextScene"></param>
+    /// <returns></returns>
     private IEnumerator FadeOutCoroutine(string nextScene)
     {
         float m_alpha = 0;
