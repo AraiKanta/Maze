@@ -13,6 +13,7 @@ public class RotateObj : MonoBehaviour
 
     void Update()
     {
+        //オブジェクトを回転させている
         transform.RotateAround(transform.position, new Vector3(0, m_vec3Y, 0), m_speed);
     }
 }
