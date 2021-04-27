@@ -31,6 +31,8 @@ public class PlayerContoller : MonoBehaviour
     private Vector3 m_direction;
     /// <summary> プレイヤーの方向 </summary>
     private Vector3 m_velocity;
+    /// <summary> GameManagerクラスを参照している変数 </summary>
+    GameManager m_gameManager = null;
 
     private void Start()
     {
@@ -73,5 +75,25 @@ public class PlayerContoller : MonoBehaviour
         transform.position = new Vector3(transform.position.x + m_velocity.x, 0, transform.position.z + m_velocity.z);
 
         m_characterController.Move(m_direction * m_speed * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// ゴール判定
+    /// </summary>
+    /// <param name="collider"></param>
+    private void OnTriggerEnter(Collider collider)
+    {
+        //このタブのObjectのコライダーに触れたらゴール
+        if (collider.gameObject.tag == "GoalObj")
+        {
+            Debug.Log("ゴールだよん♪");
+
+            //GameManagerにクリアを知らせる
+            m_gameManager = GameObject.FindObjectOfType<GameManager>();
+            if (m_gameManager)
+            {
+                m_gameManager.Finished();
+            }
+        }
     }
 }
