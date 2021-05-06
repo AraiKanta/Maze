@@ -78,7 +78,7 @@ public class PlayerContoller : MonoBehaviour
     }
 
     /// <summary>
-    /// ゴール判定
+    /// ゴール判定と鍵を拾った判定
     /// </summary>
     /// <param name="collider"></param>
     private void OnTriggerEnter(Collider collider)
