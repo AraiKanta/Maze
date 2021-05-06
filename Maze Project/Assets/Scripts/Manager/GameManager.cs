@@ -30,15 +30,15 @@ public class GameManager : MonoBehaviour
         switch (m_gameState)
         {
             case GameState.NonInitialized:
-                Debug.Log("現在の状態 : NonInitialized");
+                //Debug.Log("現在の状態 : NonInitialized");
                 m_gameState = GameState.Initialized;
                 break;
             case GameState.Initialized:
-                Debug.Log("現在の状態 : Initialized");
+                //Debug.Log("現在の状態 : Initialized");
                 m_gameState = GameState.InGame;
                 break;
             case GameState.InGame:
-                Debug.Log("現在の状態 : InGame");
+                //Debug.Log("現在の状態 : InGame");
                 break;
             case GameState.Finished:
                 Debug.Log("現在の状態 : Finished");
