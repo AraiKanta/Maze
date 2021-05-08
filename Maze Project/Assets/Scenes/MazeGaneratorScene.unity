@@ -734,12 +734,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ed17148d4e9b04d95d345b11c50fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MazeSize: 15
-  m_Wall: {fileID: 8468082971760766642, guid: 5c3196c0302a7af44b96eb28cc700b7f, type: 3}
-  m_Floor: {fileID: 2700949453211661008, guid: aabab817aa8c7264c98bb126f43d94b1, type: 3}
-  m_Player: {fileID: 5273351876332993305, guid: 9e1a49a4b1aa5284cbe8ad4a375cd1d0,
+  m_mazeSize: 15
+  m_wall: {fileID: 8468082971760766642, guid: 5c3196c0302a7af44b96eb28cc700b7f, type: 3}
+  m_floor: {fileID: 2700949453211661008, guid: aabab817aa8c7264c98bb126f43d94b1, type: 3}
+  m_player: {fileID: 5273351876332993305, guid: 9e1a49a4b1aa5284cbe8ad4a375cd1d0,
     type: 3}
-  m_Goal: {fileID: 4943673401620777027, guid: ff1c45837e95b964fa1663ab3633893e, type: 3}
+  m_goal: {fileID: 4943673401620777027, guid: ff1c45837e95b964fa1663ab3633893e, type: 3}
+  m_key: {fileID: 1280186632642951986, guid: 61e009af3fd53a34b9142327b2f9615f, type: 3}
 --- !u!4 &2059658913
 Transform:
   m_ObjectHideFlags: 0
