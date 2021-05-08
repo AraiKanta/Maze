@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4839592825548392426
 Transform:
   m_ObjectHideFlags: 0
@@ -106,5 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639bef2103ab7034087c6e55622d9b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalObj: {fileID: 4943673401620777031, guid: ff1c45837e95b964fa1663ab3633893e, type: 3}
   m_goalObj: {fileID: 0}
