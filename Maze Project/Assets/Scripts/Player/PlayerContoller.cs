@@ -33,10 +33,13 @@ public class PlayerContoller : MonoBehaviour
     private Vector3 m_velocity;
     /// <summary> GameManagerクラスを参照している変数 </summary>
     GameManager m_gameManager = null;
+    /// <summary> アニメーターの変数 </summary>
+    Animator m_anim = null;
 
     private void Start()
     {
         m_characterController = GetComponent<CharacterController>();
+        m_anim = GetComponent<Animator>();
 
         //カメラを見つけて座標を渡している
         m_camera = GameObject.Find("Camera").transform;
@@ -60,6 +63,12 @@ public class PlayerContoller : MonoBehaviour
         if (m_direction != new Vector3(0, 0, 0))
         {
             transform.localRotation = Quaternion.LookRotation(m_direction);
+
+            m_anim.SetBool("Run",true);
+        }
+        else
+        {
+            m_anim.SetBool("Run", false);
         }
 
         //右スティックでカメラの回転
