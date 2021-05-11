@@ -128,5 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65df3e0f87c36ea4dbbdcbba44efa1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 0}
-  smoothTime: 0.2
+  m_player: {fileID: 4551172108483492968, guid: f84817448e745004bbfb893de5a0c6ee,
+    type: 3}
+  m_smoothTime: 0.2
