@@ -21,9 +21,11 @@ public class MazeGanerator : MonoBehaviour
     /// <summary> ゴール地点に配置するオブジェクトの変数 </summary>
     [Header("ゴール地点に配置するオブジェクト")]
     [SerializeField] GameObject m_goal = null;
+
+    // TODO:後で追加調整
     /// <summary> 鍵の配置するオブジェクトの変数 </summary>
-    [Header("鍵の地点に配置するオブジェクト")]
-    [SerializeField] GameObject m_key = null;
+    //[Header("鍵の地点に配置するオブジェクト")]
+    //[SerializeField] GameObject m_key = null;
 
     //内部パラメーター
     //セルの種類
@@ -45,8 +47,10 @@ public class MazeGanerator : MonoBehaviour
         m_PlayerPos = GetPlayerPosition();
         //初回はゴール地点を設定
         m_GoalPos = MakeMapInfo(m_PlayerPos);
+
+        // TODO:後で追加調整
         //鍵の地点設定
-        m_keyPos = GetKeyPosition();
+        //m_keyPos = GetKeyPosition();
 
         //通路生成し袋小路を減らす
         var tmpStart = m_GoalPos;
@@ -54,7 +58,8 @@ public class MazeGanerator : MonoBehaviour
         {
             MakeMapInfo(tmpStart);
             tmpStart = GetPlayerPosition();
-            tmpStart = GetKeyPosition();
+            // TODO:後で追加調整
+            //tmpStart = GetKeyPosition();
         }
 
         //マップの状態に応じて壁と通路を生成する
@@ -63,12 +68,14 @@ public class MazeGanerator : MonoBehaviour
         //プレイヤーの地点とゴール地点と鍵の地点にオブジェクトを配置する
         var startObj = Instantiate(m_player, new Vector3(m_PlayerPos.x, 0, m_PlayerPos.y), Quaternion.identity);
         var goalObj = Instantiate(m_goal, new Vector3(m_GoalPos.x, 0, m_GoalPos.y), Quaternion.identity);
-        goalObj.SetActive(false);
-        var keyobj = Instantiate(m_key, new Vector3(m_keyPos.x, 0, m_keyPos.y), Quaternion.identity);
+        
+        // TODO:後で追加調整
+        //var keyobj = Instantiate(m_key, new Vector3(m_keyPos.x, 0, m_keyPos.y), Quaternion.identity);
 
         startObj.transform.parent = this.transform;
         goalObj.transform.parent = this.transform;
-        keyobj.transform.parent = this.transform;
+        // TODO:後で追加調整
+        //keyobj.transform.parent = this.transform;
     }
 
     /// <summary>
@@ -91,25 +98,26 @@ public class MazeGanerator : MonoBehaviour
         return new Vector2Int(randomX, randomY);
     }
 
+    // TODO:後で追加調整
     /// <summary>
     /// 鍵の地点の取得
     /// </summary>
     /// <returns></returns>
-    private Vector2Int GetKeyPosition()
-    {
-        //ランダムにX,Yを設定する
-        int randomX = Random.Range(0, m_mazeSize);
-        int randomY = Random.Range(0, m_mazeSize);
+    //private Vector2Int GetKeyPosition()
+    //{
+    //    //ランダムにX,Yを設定する
+    //    int randomX = Random.Range(0, m_mazeSize);
+    //    int randomY = Random.Range(0, m_mazeSize);
 
-        //X,Yが偶数になるなで繰り返す
-        while (!(randomX % 2 == 0 && randomY % 2 == 0))
-        {
-            randomX = Mathf.RoundToInt(Random.Range(0, m_mazeSize));
-            randomY = Mathf.RoundToInt(Random.Range(0, m_mazeSize));
-        }
+    //    //X,Yが偶数になるなで繰り返す
+    //    while (!(randomX % 2 == 0 && randomY % 2 == 0))
+    //    {
+    //        randomX = Mathf.RoundToInt(Random.Range(0, m_mazeSize));
+    //        randomY = Mathf.RoundToInt(Random.Range(0, m_mazeSize));
+    //    }
 
-        return new Vector2Int(randomX, randomY);
-    }
+    //    return new Vector2Int(randomX, randomY);
+    //}
 
     /// <summary>
     /// マップ生成
