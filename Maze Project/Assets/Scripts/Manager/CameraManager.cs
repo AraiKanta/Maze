@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary> プレイヤーに追従するカメラのクラス </summary>
 public class CameraManager : MonoBehaviour
 {
     /// <summary> プレイヤーの座標 </summary>
