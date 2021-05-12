@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary> ゲームの進行を管理するクラス </summary>
 public class GameManager : MonoBehaviour
 {
     /// <summary> ゲームの状態 </summary>
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("現在の状態 : InGame");
                 break;
             case GameState.Finished:
-                Debug.Log("現在の状態 : Finished");
+                //Debug.Log("現在の状態 : Finished");
                 Finished();
                 break;
         }
@@ -50,8 +51,6 @@ public class GameManager : MonoBehaviour
     /// <summary> ゴールの関数 </summary>
     public void Finished()
     {
-        Debug.Log("Goal!");
-
         //ゴール後のUIを非アクティブからアクティブにする
         m_goalCavas.SetActive(true);
 
