@@ -211,7 +211,7 @@ MonoBehaviour:
   _random: 0
   _threshold: 0.5
   _interval: 10
-  isGUI: 1
+  isGUI: 0
 --- !u!114 &4551172108477600928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 508261753cbbd4493b10da3a43602a39, type: 2}
   delayWeight: 3
   isKeepFace: 1
-  isGUI: 1
+  isGUI: 0
 --- !u!114 &4551172108477600932
 MonoBehaviour:
   m_ObjectHideFlags: 0
