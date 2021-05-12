@@ -64,10 +64,12 @@ public class PlayerContoller : MonoBehaviour
         {
             transform.localRotation = Quaternion.LookRotation(m_direction);
 
+            //animatorのパラメーターの判定
             m_anim.SetBool("Run",true);
         }
         else
         {
+            //animatorのパラメーターの判定
             m_anim.SetBool("Run", false);
         }
 
@@ -97,7 +99,7 @@ public class PlayerContoller : MonoBehaviour
         {
             Debug.Log("ゴールだよん♪");
 
-            //GameManagerにクリアを知らせる
+            //GameManagerにクリアを知らせる(Finished関数)
             m_gameManager = GameObject.FindObjectOfType<GameManager>();
             if (m_gameManager)
             {
