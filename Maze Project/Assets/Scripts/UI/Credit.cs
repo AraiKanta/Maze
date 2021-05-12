@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary> Creditを表示するクラス </summary>
 public class Credit : MonoBehaviour
 {
+    /// <summary> テキストのスクロールスピード </summary>
     [Header("テキストのスクロールスピード")]
     [SerializeField] private float textScrollSpeed = 30;
+    /// <summary> テキストの制限位置 </summary>
     [Header("テキストの制限位置")]
     [SerializeField] private float limitPosition = 730f;
     /// <summary>エンドロールが終了したかどうか </summary>
@@ -43,6 +46,7 @@ public class Credit : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StopCoroutine(_staffRollCoroutine);
+            SceneManager.LoadScene("Title");
         }
 
         yield return null;
