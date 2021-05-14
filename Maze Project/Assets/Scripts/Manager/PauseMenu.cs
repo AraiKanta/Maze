@@ -10,59 +10,86 @@ public class PauseMenu : MonoBehaviour
     /// <summary> Pause用のボタンの変数 </summary>
     [Header("Pause用のボタン")]
     [SerializeField] private Button m_puaseButton = null;
+    /// <summary> Pause用の戻るボタンの変数 </summary>
+    [Header("Pause用の戻るボタン")]
+    [SerializeField] private GameObject m_releaseButton = null;
     /// <summary> Pause用のリトライボタンの変数 </summary>
     [Header("Pause用のリトライボタンボタン")]
-    [SerializeField] private Button m_retryButton = null;
+    [SerializeField] private GameObject m_retryButton = null;
     /// <summary> Textの変数 </summary>
     [Header("Pause用のテキスト")]
-    [SerializeField] private GameObject m_text = null;
+    [SerializeField] private GameObject m_textPanel = null;
     /// <summary> 遷移させるシーンの名前の変数 </summary>
     [Header("遷移させるシーン名")]
     [SerializeField] private string m_sceneName = null;
-   
+    /// <summary> オーディオソースの変数 </summary>
+    [Header("オーディオソース")]
+    [SerializeField] private AudioSource m_audioSource = null;
+    /// <summary> オーディオクリップの変数 </summary>
+    [Header("オーディオクリップ")]
+    [SerializeField] private AudioClip m_audioClip = null;
 
     private void Start()
     {
-        m_puaseButton.onClick.AddListener(Pause);
-        m_retryButton.gameObject.SetActive(!m_retryButton.gameObject.activeSelf);
-        m_text.SetActive(!m_text.activeSelf);
+        m_audioSource = GetComponentInChildren<AudioSource>();
+
+        //オブジェクトを非アクティブにしておく
+        m_releaseButton.SetActive(false);
+        m_retryButton.SetActive(false);
+        m_textPanel.SetActive(false);
     }
 
+    /// <summary>
+    /// ポーズ
+    /// </summary>
     public void Pause()
     {
-        m_retryButton.gameObject.SetActive(m_retryButton.gameObject.activeSelf);
-        m_text.SetActive(m_text.activeSelf);
+        //タイムスケールを0にして止める
+        Time.timeScale = 0f;
 
-        if (m_retryButton.gameObject.activeSelf && m_text.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
+        //オブジェクトをアクティブにする
+        m_releaseButton.SetActive(true);
+        m_retryButton.SetActive(true);
+        m_textPanel.SetActive(true);
 
-        m_puaseButton.onClick.AddListener(Pause);
-        m_puaseButton.onClick.RemoveListener(Release);
+        //音ならす
+        m_audioSource.PlayOneShot(m_audioClip);
     }
 
+    /// <summary>
+    /// ゲームに戻る
+    /// </summary>
     public void Release()
     {
-        
-       
-        m_puaseButton.onClick.AddListener(Release);
-        m_puaseButton.onClick.RemoveListener(Pause);
+        //タイムスケールを1にして止める
+        Time.timeScale = 1f;
+
+        //オブジェクトを非アクティブにする
+        m_releaseButton.SetActive(false);
+        m_retryButton.SetActive(false);
+        m_textPanel.SetActive(false);
+
+        //音ならす
+        m_audioSource.PlayOneShot(m_audioClip);
     }
 
+    /// <summary>
+    /// ゲームをやり直す。自動マップせ制のため違うステージになる。
+    /// </summary>
     public void Retry()
     {
-        if (m_retryButton.gameObject.activeSelf && m_text.activeSelf)
-        {
-            Time.timeScale = 1f;
+        //タイムスケールを1にして止める
+        Time.timeScale = 1f;
 
-            m_retryButton.gameObject.SetActive(!m_retryButton.gameObject.activeSelf);
-            m_text.SetActive(!m_text.activeSelf);
-        }
+        //オブジェクトを非アクティブにする
+        m_releaseButton.SetActive(false);
+        m_retryButton.SetActive(false);
+        m_textPanel.SetActive(false);
+
+        //音ならす
+        m_audioSource.PlayOneShot(m_audioClip);
+
+        //指定したシーンに遷移
         SceneManager.LoadScene(m_sceneName);
     }
 }
