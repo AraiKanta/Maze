@@ -8,22 +8,30 @@ using UnityEngine.SceneManagement;
 public class FadeManager : MonoBehaviour
 {
     /// <summary> 値保管用 </summary>
-    float alp;
+    private float alp;
     /// <summary> シーン遷移を開始するまでの時間 </summary>
     [Header("シーン遷移を開始するまでの時間")]
-    public float fadeStartTime;
+    [SerializeField] private float fadeStartTime;
     /// <summary> 現在のステージ番号 </summary>
     [Header("現在のステージ番号")]
-    public int currentStageNum = 0;
+    [SerializeField] private int currentStageNum = 0;
     /// <summary> ステージ名 </summary>
     [Header("ステージ名")]
-    public string[] stageName;
+    [SerializeField] private string[] stageName;
     /// <summary> Panelオブジェクト </summary>
     [Header("Panelオブジェクト")]
-    public GameObject panel;
+    [SerializeField] private GameObject panel;
+    /// <summary> オーディオソースの変数 </summary>
+    [Header("オーディオソース")]
+    [SerializeField] private AudioSource m_audioSource = null;
+    /// <summary> オーディオクリップの変数 </summary>
+    [Header("オーディオクリップ")]
+    [SerializeField] private AudioClip m_audioClip = null; 
 
     void Start()
     {
+        m_audioSource = GetComponentInChildren<AudioSource>();
+
         alp = panel.GetComponent<Image>().color.a;
 
         currentStageNum += 1;
@@ -49,6 +57,8 @@ public class FadeManager : MonoBehaviour
 
     public void OnClick()
     {
+        m_audioSource.PlayOneShot(m_audioClip);
+
         StartCoroutine(FadePanel());
     }
 }

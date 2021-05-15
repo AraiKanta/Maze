@@ -11,7 +11,13 @@ public class GameManager : MonoBehaviour
     GameState m_gameState = GameState.NonInitialized;
     /// <summary> ゴール後に表示させるキャンバス </summary>
     [Header("ゴール後に表示させるキャンバス")]
-    [SerializeField] GameObject m_goalCavas = null;
+    [SerializeField] private GameObject m_goalCavas = null;
+    /// <summary> オーディオソースの変数 </summary>
+    [Header("オーディオソース")]
+    [SerializeField] private AudioSource[] m_audioSource = null;
+    /// <summary> オーディオクリップの変数 </summary>
+    [Header("オーディオクリップ")]
+    [SerializeField] private AudioClip[] m_audioClip = null;
 
     /// <summary> ゲームの状態 </summary>
     enum GameState
@@ -24,6 +30,11 @@ public class GameManager : MonoBehaviour
         InGame,
         /// <summary> ゴール,ゲーム終了 </summary>
         Finished,
+    }
+
+    private void Start()
+    {
+        m_audioSource = GetComponents<AudioSource>();
     }
 
     void Update()
@@ -54,12 +65,18 @@ public class GameManager : MonoBehaviour
         //ゴール後のUIを非アクティブからアクティブにする
         m_goalCavas.SetActive(true);
 
+        //ゴール後にオーディオ再生
+        m_audioSource[0].PlayOneShot(m_audioClip[0]);
+
         // ステータスをゴールした状態に更新する
         m_gameState = GameState.Finished;
     }
 
     public void OnClickTitle()
     {
+        //タイトルに戻るボタン押すとオーディオ再生
+        m_audioSource[1].PlayOneShot(m_audioClip[1]);
+
         //タイトルにシーンを遷移させる
         SceneManager.LoadScene("Title");
     }

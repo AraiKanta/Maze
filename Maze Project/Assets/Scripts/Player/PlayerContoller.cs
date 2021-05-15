@@ -8,21 +8,21 @@ public class PlayerContoller : MonoBehaviour
 {
     /// <summary> 移動用のJoysitck(画面左) </summary>
     [Header("移動用のJoysitck(画面左)")]
-    [SerializeField] FloatingJoystick m_floatingJoystickMove = null;
+    [SerializeField] private FloatingJoystick m_floatingJoystickMove = null;
     /// <summary> 視点変更用のJoysitck(画面右) </summary>
     [Header("視点変更用のJoysitck(画面右)")]
-    [SerializeField] FloatingJoystick m_floatingJoystickCamera = null;
+    [SerializeField] private FloatingJoystick m_floatingJoystickCamera = null;
     /// <summary> 参照しているクラスの変数 </summary>
     private CharacterController m_characterController = null;
     /// <summary> プレイヤーのスピード </summary>
     [Header("プレイヤーのスピード")]
-    [SerializeField] float m_speed = 1f;
+    [SerializeField] private float m_speed = 1f;
     /// <summary> カメラの回転速度 </summary>
     [Header("カメラの回転速度")]
-    [SerializeField] float m_rotateCamera = 1f;
+    [SerializeField] private float m_rotateCamera = 1f;
     /// <summary> カメラの親Object </summary>
     [Header("カメラの親Object")]
-    [SerializeField] Transform m_camera = null;
+    [SerializeField] private Transform m_camera = null;
     /// <summary> カメラの座標 </summary>
     private Transform m_cameraPos = null;
     /// <summary> カメラの向いている方向 </summary>

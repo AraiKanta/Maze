@@ -7,10 +7,10 @@ public class CameraManager : MonoBehaviour
 {
     /// <summary> プレイヤーの座標 </summary>
     [Header("プレイヤーの座標(PlayerPrefabを入れる)")]
-    [SerializeField] Transform m_player;
+    [SerializeField] private Transform m_player;
     /// <summary> プレイヤーの周りを動く時の時間 </summary>
     [Header("プレイヤーの周りを動く時の時間")]
-    [SerializeField] float m_smoothTime = 1;
+    [SerializeField] private float m_smoothTime = 1;
     /// <summary> 値保管用 </summary>
     Vector3 m_velocity;
 

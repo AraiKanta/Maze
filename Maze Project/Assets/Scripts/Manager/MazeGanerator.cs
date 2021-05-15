@@ -8,19 +8,19 @@ public class MazeGanerator : MonoBehaviour
 {
     /// <summary> 縦横のサイズ　※奇数 </summary>
     [Header("縦横のサイズ ※奇数")]
-    [SerializeField] int m_mazeSize = 5;
+    [SerializeField] private int m_mazeSize = 5;
     /// <summary> 壁用のオブジェクトの変数 </summary>
     [Header("壁用のオブジェクト")]
-    [SerializeField] GameObject m_wall = null;
+    [SerializeField] private GameObject m_wall = null;
     /// <summary> 床用のオブジェクトの変数 </summary>
     [Header("床用のオブジェクト")]
-    [SerializeField] GameObject m_floor = null;
+    [SerializeField] private GameObject m_floor = null;
     /// <summary> プレイヤープレハブの変数 </summary>
     [Header("プレイヤープレハブ")]
-    [SerializeField] GameObject m_player = null;
+    [SerializeField] private GameObject m_player = null;
     /// <summary> ゴール地点に配置するオブジェクトの変数 </summary>
     [Header("ゴール地点に配置するオブジェクト")]
-    [SerializeField] GameObject m_goal = null;
+    [SerializeField] private GameObject m_goal = null;
 
     // TODO:後で追加調整
     /// <summary> 鍵の配置するオブジェクトの変数 </summary>
