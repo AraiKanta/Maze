@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary> タイトルのスプライトをDOTweenで点滅させるためのクラス </summary>
 public class TitleDOTween : MonoBehaviour
 {
     [SerializeField] private float duration;
-    [SerializeField] Image _touchToStart = null;
+    [SerializeField] private Image _touchToStart = null;
 
     void Start()
     {
