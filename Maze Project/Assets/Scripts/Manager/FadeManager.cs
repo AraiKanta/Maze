@@ -37,7 +37,7 @@ public class FadeManager : MonoBehaviour
         currentStageNum += 1;
     }
 
-    //フェードアウトの処理
+    /// <summary> フェードアウトの処理 </summary>
     IEnumerator FadePanel()
     {
         while (alp < 1)
@@ -55,6 +55,7 @@ public class FadeManager : MonoBehaviour
         }
     }
 
+    /// <summary> Buttonを押したときの処理 </summary>
     public void OnClick()
     {
         m_audioSource.PlayOneShot(m_audioClip);
