@@ -52,7 +52,7 @@ public class PlayerContoller : MonoBehaviour
         }
         else
         {
-            Debug.LogError("カメラついてないからみつからないよ～ん。カメラがひつようだよ～ん");
+            Debug.LogError("カメラついてないからみつからない。カメラが必要です");
         }
     }
 
