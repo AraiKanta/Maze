@@ -38,9 +38,13 @@ public class Credit : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// スクロールが終わったとき
+    /// </summary>
+    /// <returns></returns>
     IEnumerator GoToNextScene()
     {
-        // 5秒間待つ
+        // 2秒間待つ
         yield return new WaitForSeconds(2f);
 
         if (Input.GetMouseButtonDown(0))
