@@ -8,28 +8,28 @@ public class Credit : MonoBehaviour
 {
     /// <summary> テキストのスクロールスピード </summary>
     [Header("テキストのスクロールスピード")]
-    [SerializeField] private float textScrollSpeed = 30;
+    [SerializeField] private float m_textScrollSpeed = 30;
     /// <summary> テキストの制限位置 </summary>
     [Header("テキストの制限位置")]
-    [SerializeField] private float limitPosition = 730f;
+    [SerializeField] private float m_limitPosition = 730f;
     /// <summary>エンドロールが終了したかどうか </summary>
     private bool isStopStaffRoll;
     /// <summary>シーン移動用コルーチン </summary>
-    private Coroutine _staffRollCoroutine;
+    private Coroutine m_staffRollCoroutine;
 
     void Update()
     {
         // エンドロールが終了した時
         if (isStopStaffRoll)
         {
-            _staffRollCoroutine = StartCoroutine(GoToNextScene());
+            m_staffRollCoroutine = StartCoroutine(GoToNextScene());
         }
         else
         {
             // エンドロール用テキストがリミットを越えるまで動かす
-            if (transform.position.y <= limitPosition)
+            if (transform.position.y <= m_limitPosition)
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y + textScrollSpeed * Time.deltaTime);
+                transform.position = new Vector2(transform.position.x, transform.position.y + m_textScrollSpeed * Time.deltaTime);
             }
             else
             {
@@ -49,7 +49,7 @@ public class Credit : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            StopCoroutine(_staffRollCoroutine);
+            StopCoroutine(m_staffRollCoroutine);
             SceneManager.LoadScene("Title");
         }
 
