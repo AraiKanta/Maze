@@ -83,12 +83,12 @@ public class MazeGanerator : MonoBehaviour
     /// <summary>
     /// マップ生成
     /// </summary>
-    /// <param name="_playerPos"></param>
+    /// <param name="m_playerPos"></param>
     /// <returns></returns>
-    private Vector2Int MakeMapInfo(Vector2Int _playerPos)
+    private Vector2Int MakeMapInfo(Vector2Int m_playerPos)
     {
         //スタート位置の配列を複製
-        var tmpPlayerPos = _playerPos;
+        var tmpPlayerPos = m_playerPos;
 
         //移動可能な座標リストを取得
         var movablePositions = GetMovablePositions(tmpPlayerPos);
@@ -117,13 +117,13 @@ public class MazeGanerator : MonoBehaviour
     /// <summary>
     /// 移動可能な座標リストを取得する
     /// </summary>
-    /// <param name="_playerPos"></param>
+    /// <param name="m_playerPos"></param>
     /// <returns></returns>
-    private List<Vector2Int> GetMovablePositions (Vector2Int _playerPos) 
+    private List<Vector2Int> GetMovablePositions (Vector2Int m_playerPos) 
     {
         //見やすくするために座標を変数に入れる
-        var x = _playerPos.x;
-        var y = _playerPos.y;
+        var x = m_playerPos.x;
+        var y = m_playerPos.y;
 
         //移動方向毎に2つ先のx,y座標を計算する
         var positions = new List<Vector2Int>

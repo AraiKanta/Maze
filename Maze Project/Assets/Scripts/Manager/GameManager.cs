@@ -12,12 +12,8 @@ public class GameManager : MonoBehaviour
     /// <summary> ゴール後に表示させるキャンバス </summary>
     [Header("ゴール後に表示させるキャンバス")]
     [SerializeField] private GameObject m_goalCavas = null;
-    /// <summary> オーディオソースの変数 </summary>
-    [Header("オーディオソース")]
-    [SerializeField] private AudioSource[] m_audioSource = null;
-    /// <summary> オーディオクリップの変数 </summary>
-    [Header("オーディオクリップ")]
-    [SerializeField] private AudioClip[] m_audioClip = null;
+    /// <summary> オーディオマネージャーを参照している変数 </summary>
+    AudioManager m_audioManager;
 
     /// <summary> ゲームの状態 </summary>
     enum GameState
@@ -34,7 +30,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        m_audioSource = GetComponents<AudioSource>();
+        if (GameObject.FindObjectOfType<AudioManager>())
+        {
+            m_audioManager = GameObject.FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        }
     }
 
     void Update()
@@ -62,7 +61,7 @@ public class GameManager : MonoBehaviour
         m_goalCavas.SetActive(true);
 
         //ゴール後にオーディオ再生
-        m_audioSource[0].PlayOneShot(m_audioClip[0]);
+        //m_audioManager.PlaySE(m_audioManager.audioClips[1]);
 
         // ステータスをゴールした状態に更新する
         m_gameState = GameState.Finished;
@@ -71,7 +70,7 @@ public class GameManager : MonoBehaviour
     public void OnClickTitle()
     {
         //タイトルに戻るボタン押すとオーディオ再生
-        m_audioSource[1].PlayOneShot(m_audioClip[1]);
+        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
 
         //タイトルにシーンを遷移させる
         SceneManager.LoadScene("Title");

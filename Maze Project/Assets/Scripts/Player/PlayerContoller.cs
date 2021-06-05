@@ -52,7 +52,7 @@ public class PlayerContoller : MonoBehaviour
         }
         else
         {
-            Debug.LogError("カメラついてないからみつからないよ～ん。カメラがひつようだよ～ん");
+            Debug.LogError("カメラついてないからみつからない。カメラが必要です");
         }
     }
 
@@ -97,7 +97,7 @@ public class PlayerContoller : MonoBehaviour
         //このタブのObjectのコライダーに触れたらゴール
         if (collider.gameObject.tag == "GoalObj")
         {
-            Debug.Log("ゴールだよん♪");
+            Debug.Log("ゴール");
 
             //GameManagerにクリアを知らせる(Finished関数)
             m_gameManager = GameObject.FindObjectOfType<GameManager>();

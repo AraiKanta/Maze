@@ -22,16 +22,15 @@ public class PauseMenu : MonoBehaviour
     /// <summary> 遷移させるシーンの名前の変数 </summary>
     [Header("遷移させるシーン名")]
     [SerializeField] private string m_sceneName = null;
-    /// <summary> オーディオソースの変数 </summary>
-    [Header("オーディオソース")]
-    [SerializeField] private AudioSource m_audioSource = null;
-    /// <summary> オーディオクリップの変数 </summary>
-    [Header("オーディオクリップ")]
-    [SerializeField] private AudioClip m_audioClip = null;
+    /// <summary> オーディオマネージャーを参照している変数 </summary>
+    AudioManager m_audioManager;
 
     private void Start()
     {
-        m_audioSource = GetComponentInChildren<AudioSource>();
+        if (GameObject.FindObjectOfType<AudioManager>())
+        {
+            m_audioManager = GameObject.FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        }
 
         //オブジェクトを非アクティブにしておく
         m_releaseButton.SetActive(false);
@@ -53,7 +52,7 @@ public class PauseMenu : MonoBehaviour
         m_textPanel.SetActive(true);
 
         //音ならす
-        m_audioSource.PlayOneShot(m_audioClip);
+        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
     }
 
     /// <summary>
@@ -70,7 +69,7 @@ public class PauseMenu : MonoBehaviour
         m_textPanel.SetActive(false);
 
         //音ならす
-        m_audioSource.PlayOneShot(m_audioClip);
+        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
     }
 
     /// <summary>
@@ -87,7 +86,7 @@ public class PauseMenu : MonoBehaviour
         m_textPanel.SetActive(false);
 
         //音ならす
-        m_audioSource.PlayOneShot(m_audioClip);
+        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
 
         //指定したシーンに遷移
         SceneManager.LoadScene(m_sceneName);
