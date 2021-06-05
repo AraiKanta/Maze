@@ -4,37 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
+/// <summary> シーン遷移時のフェードを管理するクラス </summary>
 public class FadeManager : MonoBehaviour
 {
     /// <summary> 値保管用 </summary>
     private float alp;
     /// <summary> シーン遷移を開始するまでの時間 </summary>
     [Header("シーン遷移を開始するまでの時間")]
-    [SerializeField] private float fadeStartTime;
+    [SerializeField] private float m_fadeStartTime;
     /// <summary> 現在のステージ番号 </summary>
     [Header("現在のステージ番号")]
-    [SerializeField] private int currentStageNum = 0;
+    [SerializeField] private int m_currentStageNum = 0;
     /// <summary> ステージ名 </summary>
     [Header("ステージ名")]
-    [SerializeField] private string[] stageName;
+    [SerializeField] private string[] m_stageName;
     /// <summary> Panelオブジェクト </summary>
     [Header("Panelオブジェクト")]
-    [SerializeField] private GameObject panel;
-    /// <summary> オーディオソースの変数 </summary>
-    [Header("オーディオソース")]
-    [SerializeField] private AudioSource m_audioSource = null;
-    /// <summary> オーディオクリップの変数 </summary>
-    [Header("オーディオクリップ")]
-    [SerializeField] private AudioClip m_audioClip = null; 
+    [SerializeField] private GameObject m_panel = null;
+    /// <summary> オーディオマネージャーを参照している変数 </summary>
+    AudioManager m_audioManager;
 
     void Start()
     {
-        m_audioSource = GetComponentInChildren<AudioSource>();
+        if (GameObject.FindObjectOfType<AudioManager>())
+        {
+            m_audioManager = GameObject.FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        }
 
-        alp = panel.GetComponent<Image>().color.a;
+        alp = m_panel.GetComponent<Image>().color.a;
 
-        currentStageNum += 1;
+        m_currentStageNum += 1;
     }
 
     /// <summary> フェードアウトの処理 </summary>
@@ -42,12 +41,12 @@ public class FadeManager : MonoBehaviour
     {
         while (alp < 1)
         {
-            fadeStartTime += Time.deltaTime;
-            panel.GetComponent<Image>().color += new Color(0, 0, 0, 0.1f * fadeStartTime);
+            m_fadeStartTime += Time.deltaTime;
+            m_panel.GetComponent<Image>().color += new Color(0, 0, 0, 0.1f * m_fadeStartTime);
             alp += 0.01f;
             yield return new WaitForEndOfFrame();
         }
-        SceneManager.LoadSceneAsync(stageName[currentStageNum]);
+        SceneManager.LoadSceneAsync(m_stageName[m_currentStageNum]);
 
         if (Time.timeScale == 0f)
         {
@@ -58,7 +57,8 @@ public class FadeManager : MonoBehaviour
     /// <summary> Buttonを押したときの処理 </summary>
     public void OnClick()
     {
-        m_audioSource.PlayOneShot(m_audioClip);
+        //音ならす
+        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
 
         StartCoroutine(FadePanel());
     }
