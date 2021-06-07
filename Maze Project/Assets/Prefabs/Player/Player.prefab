@@ -322,6 +322,7 @@ MonoBehaviour:
   m_rotateCamera: 120
   m_camera: {fileID: 1128621811212300199, guid: f22592cb185bee540be59350583af6f7,
     type: 3}
+  m_canMove: 1
 --- !u!1 &4551172108483649610
 GameObject:
   m_ObjectHideFlags: 0
