@@ -57,8 +57,11 @@ public class FadeManager : MonoBehaviour
     /// <summary> Buttonを押したときの処理 </summary>
     public void OnClick()
     {
-        //音ならす
-        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        if (m_audioManager)
+        {
+            //音ならす
+            m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        }
 
         StartCoroutine(FadePanel());
     }
