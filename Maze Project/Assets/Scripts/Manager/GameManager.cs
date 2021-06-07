@@ -12,8 +12,13 @@ public class GameManager : MonoBehaviour
     /// <summary> ゴール後に表示させるキャンバス </summary>
     [Header("ゴール後に表示させるキャンバス")]
     [SerializeField] private GameObject m_goalCavas = null;
+    /// <summary> スタート前のCountdownするテキストの変数 </summary>
+    [Header("Countdownするテキスト")]
+    [SerializeField] private Text m_countText = null;
     /// <summary> オーディオマネージャーを参照している変数 </summary>
     AudioManager m_audioManager;
+    /// <summary> ゲームクリア時に一回だけBGMを鳴らすためのフラグ </summary>
+    private bool m_isClear = false;
 
     /// <summary> ゲームの状態 </summary>
     enum GameState
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Initialized:
                 m_gameState = GameState.InGame;
+                StartCoroutine(CountStart());
                 break;
             case GameState.InGame:
                 break;
@@ -60,18 +66,43 @@ public class GameManager : MonoBehaviour
         //ゴール後のUIを非アクティブからアクティブにする
         m_goalCavas.SetActive(true);
 
-        //ゴール後にオーディオ再生
-        //m_audioManager.PlaySE(m_audioManager.audioClips[1]);
+        if (!m_isClear)
+        {
+            if (m_audioManager)
+            {
+                //ゴール後にオーディオ再生
+                m_audioManager.PlaySE(m_audioManager.audioClips[1]);
 
-        // ステータスをゴールした状態に更新する
+                m_isClear = true;
+            }  
+        }
+
+        // ステートをゴールした状態に更新する
         m_gameState = GameState.Finished;
+    }
+
+    IEnumerator CountStart() 
+    {
+        m_countText.text = "3";
+        yield return new WaitForSeconds(1f);
+        m_countText.text = "2";
+        yield return new WaitForSeconds(1f);
+        m_countText.text = "1";
+        yield return new WaitForSeconds(1f);
+        m_countText.text = "Start!";
+        yield return new WaitForSeconds(0.5f);
+        m_countText.gameObject.SetActive(false);
+        // ステートをゴールした状態に更新する
+        m_gameState = GameState.InGame;
     }
 
     public void OnClickTitle()
     {
-        //タイトルに戻るボタン押すとオーディオ再生
-        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
-
+        if (m_audioManager)
+        {
+            //タイトルに戻るボタン押すとオーディオ再生
+            m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        }
         //タイトルにシーンを遷移させる
         SceneManager.LoadScene("Title");
     }
