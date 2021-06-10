@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 /// <summary> アプリケーションを終了させるクラス </summary>
 public class AppEndManager : MonoBehaviour
 {
+    /// <summary> オーディオマネージャーを参照している変数 </summary>
+    AudioManager m_audioManager;
+
+    private void Start()
+    {
+        if (GameObject.FindObjectOfType<AudioManager>())
+        {
+            m_audioManager = GameObject.FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        }
+    }
+
     /// <summary>
     /// 終了ボタン
     /// </summary>
@@ -23,5 +34,11 @@ public class AppEndManager : MonoBehaviour
     public void OnExit()
     {
         Application.Quit();
+
+        if (m_audioManager)
+        {
+            //音ならす
+            m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        }
     }
 }

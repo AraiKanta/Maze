@@ -51,8 +51,11 @@ public class PauseMenu : MonoBehaviour
         m_retryButton.SetActive(true);
         m_textPanel.SetActive(true);
 
-        //音ならす
-        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        if (m_audioManager)
+        {
+            //音ならす
+            m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        } 
     }
 
     /// <summary>
@@ -68,8 +71,11 @@ public class PauseMenu : MonoBehaviour
         m_retryButton.SetActive(false);
         m_textPanel.SetActive(false);
 
-        //音ならす
-        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        if (m_audioManager)
+        {
+            //音ならす
+            m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        }
     }
 
     /// <summary>
@@ -85,8 +91,11 @@ public class PauseMenu : MonoBehaviour
         m_retryButton.SetActive(false);
         m_textPanel.SetActive(false);
 
-        //音ならす
-        m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        if (m_audioManager)
+        {
+            //音ならす
+            m_audioManager.PlaySE(m_audioManager.audioClips[0]);
+        }
 
         //指定したシーンに遷移
         SceneManager.LoadScene(m_sceneName);

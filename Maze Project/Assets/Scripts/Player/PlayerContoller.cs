@@ -58,6 +58,14 @@ public class PlayerContoller : MonoBehaviour
 
     private void Update()
     {
+        PlayerMove();
+    }
+
+    /// <summary>
+    /// プレイヤーの動きを制御する関数
+    /// </summary>
+    public void PlayerMove() 
+    {
         //左スティックでプレイヤーの移動
         m_direction = Quaternion.Euler(0, m_camera.eulerAngles.y, 0) * (Vector3.forward * m_floatingJoystickMove.Vertical + Vector3.right * m_floatingJoystickMove.Horizontal);
         if (m_direction != new Vector3(0, 0, 0))
@@ -65,7 +73,7 @@ public class PlayerContoller : MonoBehaviour
             transform.localRotation = Quaternion.LookRotation(m_direction);
 
             //animatorのパラメーターの判定
-            m_anim.SetBool("Run",true);
+            m_anim.SetBool("Run", true);
         }
         else
         {
