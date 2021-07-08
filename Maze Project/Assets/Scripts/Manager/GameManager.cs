@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
         InGame,
         /// <summary> ゴール,ゲーム終了 </summary>
         Finished,
+        /// <summary> タイムアップ </summary>
+        TimeUp,
     }
 
     private void Start()
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour
             case GameState.Finished:
                 Finished();
                 break;
+            case GameState.TimeUp:
+                break;
         }
     }
 
@@ -79,6 +83,11 @@ public class GameManager : MonoBehaviour
 
         // ステートをゴールした状態に更新する
         m_gameState = GameState.Finished;
+    }
+
+    public void TimeUP()
+    {
+        m_gameState = GameState.TimeUp;
     }
 
     IEnumerator CountStart() 
