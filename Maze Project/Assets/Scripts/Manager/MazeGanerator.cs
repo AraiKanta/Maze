@@ -22,16 +22,34 @@ public class MazeGanerator : MonoBehaviour
     [Header("ゴール地点に配置するオブジェクト")]
     [SerializeField] private GameObject m_goal = null;
 
+    // TODO:実装途中
+    //[SerializeField] private GameObject m_key = null;
+
     //内部パラメーター
     //セルの種類
     private enum CellType { Wall,Path };
     private CellType[,] cells;
 
+    #region
+    //TODO:実装中
+    //難易度のステート
+    private enum Difficulty
+    {
+        Easy,
+        Nomal,
+        Heard
+    }
+    #endregion
+
     /// <summary> スタートの座標 </summary>
     private Vector2Int m_PlayerPos;
     /// <summary> ゴールの座標 </summary>
     private Vector2Int m_GoalPos;
-    
+
+    // TODO:実装途中
+    /// <summary> Keyの座標 </summary>
+    //private Vector2Int m_keyPos;
+
     void Start()
     {
         //マップの初期化
@@ -55,9 +73,15 @@ public class MazeGanerator : MonoBehaviour
         //プレイヤーの地点とゴール地点と鍵の地点にオブジェクトを配置する
         var startObj = Instantiate(m_player, new Vector3(m_PlayerPos.x, 0, m_PlayerPos.y), Quaternion.identity);
         var goalObj = Instantiate(m_goal, new Vector3(m_GoalPos.x, 0, m_GoalPos.y), Quaternion.identity);
-        
+
+        // TODO:実装途中
+        //var keyObj = Instantiate(m_, new Vector3(m_keyPos.x, 0, m_keyPos.y), Quaternion.identity);
+
         startObj.transform.parent = this.transform;
         goalObj.transform.parent = this.transform;
+
+        // TODO:実装途中
+        //keyObj.transform.parent = this.transform;
     }
 
     /// <summary>
