@@ -24,6 +24,8 @@ public class FadeManager : MonoBehaviour
     /// <summary> オーディオマネージャーを参照している変数 </summary>
     AudioManager m_audioManager;
 
+    [SerializeField] DifficultyManager m_difficultyManager;
+
     void Start()
     {
         if (GameObject.FindObjectOfType<AudioManager>())
@@ -46,6 +48,10 @@ public class FadeManager : MonoBehaviour
             alp += 0.01f;
             yield return new WaitForEndOfFrame();
         }
+
+        //sceneLoadedに登録している関数(今回でいうとDifficulty)がシーン遷移後に実行される
+        SceneManager.sceneLoaded += m_difficultyManager.Difficulty;
+
         SceneManager.LoadSceneAsync(m_stageName[m_currentStageNum]);
 
         if (Time.timeScale == 0f)
