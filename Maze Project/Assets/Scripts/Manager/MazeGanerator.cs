@@ -8,7 +8,7 @@ public class MazeGanerator : MonoBehaviour
 {
     /// <summary> 縦横のサイズ　※奇数 </summary>
     [Header("縦横のサイズ ※奇数")]
-    [SerializeField] private int m_mazeSize = 5;
+    [SerializeField] private int m_mazeSize = default(int);
     /// <summary> 壁用のオブジェクトの変数 </summary>
     [Header("壁用のオブジェクト")]
     [SerializeField] private GameObject m_wall = null;
@@ -22,6 +22,8 @@ public class MazeGanerator : MonoBehaviour
     [Header("ゴール地点に配置するオブジェクト")]
     [SerializeField] private GameObject m_goal = null;
 
+    public int setMazeSize { set { m_mazeSize = value; } }
+
     // TODO:実装途中
     //[SerializeField] private GameObject m_key = null;
 
@@ -29,17 +31,6 @@ public class MazeGanerator : MonoBehaviour
     //セルの種類
     private enum CellType { Wall,Path };
     private CellType[,] cells;
-
-    #region
-    //TODO:実装中
-    //難易度のステート
-    private enum Difficulty
-    {
-        Easy,
-        Nomal,
-        Heard
-    }
-    #endregion
 
     /// <summary> スタートの座標 </summary>
     private Vector2Int m_PlayerPos;
