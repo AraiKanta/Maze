@@ -35,6 +35,11 @@ public class PlayerContoller : MonoBehaviour
     GameManager m_gameManager = null;
     /// <summary> アニメーターの変数 </summary>
     Animator m_anim = null;
+    /// <summary> 鍵オブジェクトの変数 </summary>
+    [Header("鍵の座標(KeyObjPrefabが入る)")]
+    [SerializeField] private Transform m_keyObj = null;
+    /// <summary> 鍵オブジェクトの座標を入れる変数 </summary>
+    private Transform m_keyObjPos = null;
 
     private void Start()
     {
@@ -45,6 +50,10 @@ public class PlayerContoller : MonoBehaviour
         m_camera = GameObject.Find("Camera").transform;
         m_camera.GetComponent<CameraManager>().SetPlayer(transform);
 
+        ////鍵オブジェクトを見つけて座標を渡してる
+        m_keyObj = FindObjectOfType<GetKey>().transform;
+        m_keyObj.GetComponent<GetKey>().SetPlayer(transform);
+
         //カメラ見つける
         if (Camera.main != null)
         {
@@ -53,6 +62,16 @@ public class PlayerContoller : MonoBehaviour
         else
         {
             Debug.LogError("カメラついてないからみつからない。カメラが必要です");
+        }
+
+        //鍵をみつける
+        if (m_keyObj != null)
+        {
+            m_keyObjPos = m_keyObj.transform;
+        }
+        else
+        {
+            Debug.Log("鍵見つからないよ");
         }
     }
 
