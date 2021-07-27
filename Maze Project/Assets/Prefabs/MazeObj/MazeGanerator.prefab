@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ed17148d4e9b04d95d345b11c50fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mazeSize: 7
+  m_mazeSize: 15
   m_wall: {fileID: 8468082971760766642, guid: 5c3196c0302a7af44b96eb28cc700b7f, type: 3}
   m_floor: {fileID: 2700949453211661008, guid: aabab817aa8c7264c98bb126f43d94b1, type: 3}
   m_player: {fileID: 4551172108483649608, guid: f84817448e745004bbfb893de5a0c6ee,
