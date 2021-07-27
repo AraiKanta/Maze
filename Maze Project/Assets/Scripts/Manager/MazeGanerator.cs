@@ -21,12 +21,13 @@ public class MazeGanerator : MonoBehaviour
     /// <summary> ゴール地点に配置するオブジェクトの変数 </summary>
     [Header("ゴール地点に配置するオブジェクト")]
     [SerializeField] private GameObject m_goal = null;
+    // TODO:実装途中
+    /// <summary> 鍵生成地点に配置するオブジェクトの変数</summary>
+    [Header("鍵生成地点に配置するオブジェクト")]
+    [SerializeField] private GameObject m_key = null;
 
     public int setMazeSize { set { m_mazeSize = value; } }
-
-    // TODO:実装途中
-    //[SerializeField] private GameObject m_key = null;
-
+ 
     //内部パラメーター
     //セルの種類
     private enum CellType { Wall,Path };
@@ -38,8 +39,8 @@ public class MazeGanerator : MonoBehaviour
     private Vector2Int m_GoalPos;
 
     // TODO:実装途中
-    /// <summary> Keyの座標 </summary>
-    //private Vector2Int m_keyPos;
+    /// <summary> Keyの座標</summary>
+    private Vector2Int m_keyPos;
 
     void Start()
     {
@@ -50,12 +51,18 @@ public class MazeGanerator : MonoBehaviour
         //初回はゴール地点を設定
         m_GoalPos = MakeMapInfo(m_PlayerPos);
 
+        //TODO:実装途中
+         m_keyPos = MakeMapInfo(m_PlayerPos);
+
         //通路生成し袋小路を減らす
         var tmpStart = m_GoalPos;
+        var tmpStartKeyPos = m_keyPos;
         for (int i = 0; i < m_mazeSize * 5; i++)
         {
             MakeMapInfo(tmpStart);
-            tmpStart = GetPlayerPosition();  
+            MakeMapInfo(tmpStartKeyPos);
+            tmpStart = GetPlayerPosition();
+            tmpStartKeyPos = GetPlayerPosition();
         }
 
         //マップの状態に応じて壁と通路を生成する
@@ -66,13 +73,13 @@ public class MazeGanerator : MonoBehaviour
         var goalObj = Instantiate(m_goal, new Vector3(m_GoalPos.x, 0, m_GoalPos.y), Quaternion.identity);
 
         // TODO:実装途中
-        //var keyObj = Instantiate(m_, new Vector3(m_keyPos.x, 0, m_keyPos.y), Quaternion.identity);
+        var keyObj = Instantiate(m_key, new Vector3(m_keyPos.x, 0, m_keyPos.y), Quaternion.identity);
 
         startObj.transform.parent = this.transform;
         goalObj.transform.parent = this.transform;
 
         // TODO:実装途中
-        //keyObj.transform.parent = this.transform;
+        keyObj.transform.parent = this.transform;
     }
 
     /// <summary>
