@@ -8,7 +8,10 @@ public class Credit : MonoBehaviour
 {
     /// <summary> テキストのスクロールスピード </summary>
     [Header("テキストのスクロールスピード")]
-    [SerializeField] private float m_textScrollSpeed = 30;
+    [SerializeField] private float m_textScrollSpeed = 300;
+    /// <summary> 画面をTouchしているときのテキストのスクロールスピード </summary>
+    [Header(" 画面をTouchしているときのテキストのスクロールスピード")]
+    [SerializeField] private float m_TouchScrollSpeed = 1200;
     /// <summary> テキストの制限位置 </summary>
     [Header("テキストの制限位置")]
     [SerializeField] private float m_limitPosition = 730f;
@@ -16,6 +19,15 @@ public class Credit : MonoBehaviour
     private bool isStopStaffRoll;
     /// <summary>シーン移動用コルーチン </summary>
     private Coroutine m_staffRollCoroutine;
+
+    /// <summary>
+    /// 画面をTouchしたときはスクロールスピードが上がる
+    /// </summary>
+    public void TouchScreen()
+    {
+        Debug.Log("スクロールスピードアップ");
+        m_textScrollSpeed += 900;
+    }
 
     void Update()
     {
@@ -55,4 +67,6 @@ public class Credit : MonoBehaviour
 
         yield return null;
     }
+
+   
 }
