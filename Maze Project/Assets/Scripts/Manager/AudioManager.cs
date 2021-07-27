@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary> Audioを管理するクラス </summary>
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
     /// <summary>タイトル画面のBGM</summary>
