@@ -146,7 +146,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4551172108483492968}
   - component: {fileID: 4551172108474126976}
-  - component: {fileID: 4551172108477600930}
   - component: {fileID: 4551172108477600928}
   - component: {fileID: 4551172108477600932}
   - component: {fileID: 7096071057169515681}
@@ -155,7 +154,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -196,22 +195,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4551172108477600930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4551172108483649608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058a2736f2afd564eae55007a87eed87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _random: 0
-  _threshold: 0.5
-  _interval: 10
-  isGUI: 0
 --- !u!114 &4551172108477600928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +305,7 @@ MonoBehaviour:
   m_rotateCamera: 120
   m_camera: {fileID: 1128621811212300199, guid: f22592cb185bee540be59350583af6f7,
     type: 3}
-  m_canMove: 1
+  m_keyObj: {fileID: 0}
 --- !u!1 &4551172108483649610
 GameObject:
   m_ObjectHideFlags: 0
