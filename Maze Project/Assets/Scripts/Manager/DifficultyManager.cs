@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary> 難易度設定用のクラス </summary>
 public class DifficultyManager : MonoBehaviour
 {
-
-    private int size = default; 
-
+    /// <summary> マップサイズを格納する変数 </summary>
+    private int m_size = default(int); 
 
     public void Difficulty(Scene next, LoadSceneMode mode) 
     {
-        GameObject.Find("MazeGanerator").GetComponent<MazeGanerator>().setMazeSize = size;
+        GameObject.Find("MazeGanerator").GetComponent<MazeGanerator>().setMazeSize = m_size;
 
         SceneManager.sceneLoaded -= Difficulty;
     }
@@ -21,20 +21,20 @@ public class DifficultyManager : MonoBehaviour
     /// </summary>
     public void Easy() 
     {
-        size = 7;
+        m_size = 11;
     }
     /// <summary>
     /// ボタンが押されたときにマップサイズを変更するメソッドNomal()
     /// </summary>
     public void Nomal()
     {
-        size = 15;
+        m_size = 21;
     }
     /// <summary>
     /// ボタンが押されたときにマップサイズを変更するメソッドHeard()
     /// </summary>
     public void Heard()
     {
-        size = 21;
+        m_size = 31;
     }
 }
