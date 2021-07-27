@@ -8,16 +8,16 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     /// <summary> Pause用のボタンの変数 </summary>
-    [Header("Pause用のボタン")]
+    [Header("Pauseボタン")]
     [SerializeField] private Button m_puaseButton = null;
     /// <summary> Pause用の戻るボタンの変数 </summary>
-    [Header("Pause用の戻るボタン")]
+    [Header("戻るボタン")]
     [SerializeField] private GameObject m_releaseButton = null;
     /// <summary> Pause用のリトライボタンの変数 </summary>
-    [Header("Pause用のリトライボタンボタン")]
+    [Header("リトライボタンボタン")]
     [SerializeField] private GameObject m_retryButton = null;
     /// <summary> Textの変数 </summary>
-    [Header("Pause用のテキスト")]
+    [Header("Pauseテキスト")]
     [SerializeField] private GameObject m_textPanel = null;
     /// <summary> 遷移させるシーンの名前の変数 </summary>
     [Header("遷移させるシーン名")]
