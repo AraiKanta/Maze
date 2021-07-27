@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 /// <summary>制限時間を制御するクラス</summary>
-[RequireComponent(typeof(Text))]
 public class TimeManager : MonoBehaviour
 {
+    /// <summary> スタート前のCountdownするテキストの変数 </summary>
+    [Header("スタートCountdownするテキスト")]
+    [SerializeField] private Text m_countText = null;
     /// <summary> トータル制限時間 </summary>
     [Header("トータル制限時間")]
     private float m_totalTime = default(float);
@@ -25,68 +27,89 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Text m_timerText = null;
     /// <summary> 遅延させる時間 </summary>
     [Header("点滅の間隔の時間")]
-    [SerializeField] private float m_duration;
+    [SerializeField] private float m_duration = default(float);
     /// <summary> 古い時間を格納しておく変数 </summary>
     private float m_oldSeconds = default(float);
     /// <summary> 参照しているクラスの変数 </summary>
-    GameManager m_timeUp;
+    GameManager m_gameManger = null;
 
     void Start()
     {
         m_totalTime = m_minute * 60 + m_seconds;
         m_oldSeconds = 0f;
         m_timerText = GetComponentInChildren<Text>();
+
+        StartCoroutine(CountStart());
     }
 
-
-    void Update()
+    /// <summary>
+    /// カウントダウンを行うコルーチン
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator CountStart()
     {
-        CountDown();
+        m_countText.text = "3";
+        yield return new WaitForSeconds(1f);
+        m_countText.text = "2";
+        yield return new WaitForSeconds(1f);
+        m_countText.text = "1";
+        yield return new WaitForSeconds(1f);
+        m_countText.text = "鍵を獲得しろ！";
+        yield return new WaitForSeconds(2f);
+        m_countText.gameObject.SetActive(false);
+
+        StartCoroutine(CountDown());
     }
 
     /// <summary>
     /// 制限時間の処理を行うメソッド
     /// </summary>
-    public void CountDown()
+    IEnumerator CountDown()
     {
-        //　制限時間が0秒以下なら何もしない
-        if (m_totalTime <= 0f)
+        while (true)
         {
-            return;
-        }
-        //　一旦トータルの制限時間を計測；
-        m_totalTime = m_minute * 60 + m_seconds;
-        m_totalTime -= Time.deltaTime;
+            //　一旦トータルの制限時間を計測；
+            m_totalTime = m_minute * 60 + m_seconds;
+            m_totalTime -= Time.deltaTime;
 
-        //　再設定
-        m_minute = (int)m_totalTime / 60;
-        m_seconds = m_totalTime - m_minute * 60;
+            //　再設定
+            m_minute = (int)m_totalTime / 60;
+            m_seconds = m_totalTime - m_minute * 60;
 
-        if (m_totalTime < m_startWarning)
-        {
-            WarnigTime();
-        }
-        //　タイマー表示用UIテキストに時間を表示する
-        if ((int)m_seconds != (int)m_oldSeconds)
-        {
-            m_timerText.text = m_minute.ToString("00") + ":" + ((int)m_seconds).ToString("00");
-        }
-        m_oldSeconds = m_seconds;
-        //　制限時間以下になったらコンソールに『TIME UP』という文字列を表示する
-        if (m_totalTime <= 0f)
-        {
-            Debug.Log("TIME UP");
-
-            //GameManagerに渡してる
-            m_timeUp = GameObject.FindObjectOfType<GameManager>();
-            if (m_timeUp)
+            if (m_totalTime < m_startWarning)
             {
-                m_timeUp.TimeUP();
+                WarnigTime();
             }
-        }
+
+            //　タイマー表示用UIテキストに時間を表示する
+            if ((int)m_seconds != (int)m_oldSeconds)
+            {
+                m_timerText.text = m_minute.ToString("00") + ":" + ((int)m_seconds).ToString("00");
+            }
+            m_oldSeconds = m_seconds;
+
+            //　制限時間以下になったらコンソールに『TIME UP』という文字列を表示する
+            if (m_totalTime <= 0f)
+            {
+                Debug.Log("TIME UP");
+
+                //GameManagerに渡してる
+                m_gameManger = GameObject.FindObjectOfType<GameManager>();
+                if (m_gameManger)
+                {
+                    m_gameManger.TimeUP();
+                }
+
+                break;
+            }
+
+            yield return null;
+        } 
     }
 
-    /// <summary> 制限時間が少なくなると赤く点滅をさせるメソッド </summary>
+    /// <summary> 
+    /// 制限時間が少なくなると赤く点滅をさせるメソッド 
+    /// </summary>
     private void WarnigTime()
     {
         var sequence = DOTween.Sequence();
