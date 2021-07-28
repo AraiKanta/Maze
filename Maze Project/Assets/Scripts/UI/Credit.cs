@@ -8,13 +8,13 @@ public class Credit : MonoBehaviour
 {
     /// <summary> テキストのスクロールスピード </summary>
     [Header("テキストのスクロールスピード")]
-    [SerializeField] private float m_textScrollSpeed = 300;
+    [SerializeField] private float m_textScrollSpeed = default;
     /// <summary> 画面をTouchしているときのテキストのスクロールスピード </summary>
     [Header(" 画面をTouchしているときのテキストのスクロールスピード")]
-    [SerializeField] private float m_TouchScrollSpeed = 1200;
+    [SerializeField] private float m_TouchScrollSpeed = default;
     /// <summary> テキストの制限位置 </summary>
     [Header("テキストの制限位置")]
-    [SerializeField] private float m_limitPosition = 730f;
+    [SerializeField] private float m_limitPosition = default;
     /// <summary>エンドロールが終了したかどうか </summary>
     private bool isStopStaffRoll;
     /// <summary>シーン移動用コルーチン </summary>
