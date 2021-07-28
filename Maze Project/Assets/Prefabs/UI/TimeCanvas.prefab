@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_countText: {fileID: 0}
-  m_minute: 0
-  m_seconds: 3000
-  m_startWarning: 5
+  m_minute: 2
+  m_seconds: 0
+  m_startWarning: 20
   m_timerText: {fileID: 2296439020309916426}
   m_duration: 0.5
