@@ -46,15 +46,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
                 PlayBgm(titleBGM);
                 audioSourceBGM.loop = true;
                 break;
-            case "EasyScene":
-                PlayBgm(gameBGM);
-                audioSourceBGM.loop = true;
-                break;
-            case "NormalScene":
-                PlayBgm(gameBGM);
-                audioSourceBGM.loop = true;
-                break;
-            case "HardScene":
+            case "GameScene":
                 PlayBgm(gameBGM);
                 audioSourceBGM.loop = true;
                 break;
