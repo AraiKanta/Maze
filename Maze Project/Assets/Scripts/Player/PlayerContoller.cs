@@ -40,6 +40,8 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private Transform m_keyObj = null;
     /// <summary> 鍵オブジェクトの座標を入れる変数 </summary>
     private Transform m_keyObjPos = null;
+    /// <summary> タイムマネージャーを参照する変数 </summary>
+    TimeManager m_timeManager;
 
     private void Start()
     {
@@ -131,6 +133,11 @@ public class PlayerContoller : MonoBehaviour
             if (m_gameManager)
             {
                 m_gameManager.Finished();
+            }
+            m_timeManager = FindObjectOfType<TimeManager>();
+            if (m_timeManager)
+            {
+                m_timeManager.StopTimer();
             }
         }
     }
