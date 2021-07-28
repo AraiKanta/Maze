@@ -102,7 +102,6 @@ public class TimeManager : MonoBehaviour
 
                 break;
             }
-
             yield return null;
         } 
     }
@@ -117,5 +116,15 @@ public class TimeManager : MonoBehaviour
                 .Append(m_timerText.DOFade(0.0f, m_duration).SetEase(Ease.InOutFlash))
                 .SetLoops(-1, LoopType.Yoyo)
                 .Play();
+    }
+
+    /// <summary>
+    /// クリアしたときにGameManagerから呼ばれるメソッド
+    /// </summary>
+    public void StopTimer()
+    {
+        Debug.Log("時間止める");
+
+        StopAllCoroutines();
     }
 }
