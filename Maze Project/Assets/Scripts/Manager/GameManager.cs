@@ -23,9 +23,6 @@ public class GameManager : MonoBehaviour
     /// <summary> 鍵を獲得した時に表示するテキスト </summary>
     [Header("鍵を獲得した時に表示するテキスト")]
     [SerializeField] Text m_getKeyText = null;
-    /// <summary> 遅延させる時間 </summary>
-    [Header("点滅の間隔の時間")]
-    [SerializeField] private float m_duration = default;
     ///<summary> ゲームの状態 </summary>
     [Header("現在のゲームの状態")]
     public GameState m_gameState;
