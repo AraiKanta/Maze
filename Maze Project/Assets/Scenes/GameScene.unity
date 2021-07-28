@@ -749,21 +749,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1191471291, guid: 01ef6848e2bfbf74d9a7a6018c2b2f14, type: 3}
-      propertyPath: m_minute
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191471291, guid: 01ef6848e2bfbf74d9a7a6018c2b2f14, type: 3}
-      propertyPath: m_seconds
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191471291, guid: 01ef6848e2bfbf74d9a7a6018c2b2f14, type: 3}
       propertyPath: m_countText
       value: 
       objectReference: {fileID: 497725626}
-    - target: {fileID: 1191471291, guid: 01ef6848e2bfbf74d9a7a6018c2b2f14, type: 3}
-      propertyPath: m_startWarning
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2296439020042153888, guid: 01ef6848e2bfbf74d9a7a6018c2b2f14,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1255,12 +1243,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MazeGanerator
       objectReference: {fileID: 0}
-    - target: {fileID: 8118978089045896300, guid: 2568d0ba884faec4f9298719e7a46ced,
-        type: 3}
-      propertyPath: m_key
-      value: 
-      objectReference: {fileID: 1280186632642951986, guid: 61e009af3fd53a34b9142327b2f9615f,
-        type: 3}
     - target: {fileID: 8118978089045896301, guid: 2568d0ba884faec4f9298719e7a46ced,
         type: 3}
       propertyPath: m_RootOrder
