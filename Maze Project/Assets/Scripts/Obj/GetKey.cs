@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 // TODO:実装途中
 /// <summary> 鍵を取ったときゴールを出現させるクラス </summary>
@@ -20,12 +21,21 @@ public class GetKey : MonoBehaviour
     [SerializeField] private Transform m_gameManager = null;
     /// <summary> GameManagerの座標を入れる変数 </summary>
     private Transform m_gameManagerPos = null;
+    /// <summary> 何度回転させるかの変数 </summary>
+    [Header("何度回転させるかの値")]
+    [SerializeField] private float m_rotateAngle = default;
 
     private void Start()
     {
         FindGoal();
 
         FindGameManager();
+    }
+
+    private void Update()
+    {
+        this.transform.position = new Vector3(0, 0, 0);
+        this.transform.Rotate(new Vector3(0, m_rotateAngle * Time.deltaTime, 0));
     }
 
     /// <summary>
