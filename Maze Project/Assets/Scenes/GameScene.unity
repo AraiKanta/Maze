@@ -280,7 +280,6 @@ MonoBehaviour:
   m_timeUpCavas: {fileID: 949060440}
   m_keyObj: {fileID: 0}
   m_getKeyText: {fileID: 960599402}
-  m_duration: 0
   m_gameState: 0
 --- !u!4 &1136804636
 Transform:
@@ -522,6 +521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ClearCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 52719705642899214, guid: 9e0a08182b3fbdb449ecc99c8939f61f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e0a08182b3fbdb449ecc99c8939f61f, type: 3}
@@ -995,6 +999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GetKeyCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2064528368370444014, guid: eec5b43b86f5f0245863528add99f1a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7107235506927026140, guid: eec5b43b86f5f0245863528add99f1a7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1243,6 +1252,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: MazeGanerator
       objectReference: {fileID: 0}
+    - target: {fileID: 8118978089045896300, guid: 2568d0ba884faec4f9298719e7a46ced,
+        type: 3}
+      propertyPath: m_key
+      value: 
+      objectReference: {fileID: 2071880617733319769, guid: 84b935cbb19879944801a76c0d8d90ce,
+        type: 3}
     - target: {fileID: 8118978089045896301, guid: 2568d0ba884faec4f9298719e7a46ced,
         type: 3}
       propertyPath: m_RootOrder
