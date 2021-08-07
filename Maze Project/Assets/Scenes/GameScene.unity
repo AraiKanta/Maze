@@ -731,6 +731,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1861954018662130911, guid: f588041cbac9b6b4da75193a137c9f00,
+        type: 3}
+      propertyPath: m_sceneName
+      value: GameScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f588041cbac9b6b4da75193a137c9f00, type: 3}
 --- !u!114 &1861954019856444400 stripped
@@ -985,6 +990,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CountDownCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4375208960371789809, guid: ca1b8124ddda864448a3e97aec596119,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca1b8124ddda864448a3e97aec596119, type: 3}
 --- !u!1001 &6223144994065872518
@@ -1000,6 +1010,11 @@ PrefabInstance:
       value: GetKeyCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 2064528368370444014, guid: eec5b43b86f5f0245863528add99f1a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573938459940270851, guid: eec5b43b86f5f0245863528add99f1a7,
         type: 3}
       propertyPath: m_IsActive
       value: 0
