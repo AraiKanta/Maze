@@ -1,7 +1,7 @@
 # Maze 
 ## 3Dの迷路ゲーム
 ### マップ自動生成やりたかった。（穴掘り法）
-Maze Project/Assets/Scripts/Manager/MazeGanerator.cs
+
 * プラットフォーム : Android
 * 開発環境 : Unity
 * 開発期間 : (チーム制作などもあり)3週間。(これからなにか追加するかも)
