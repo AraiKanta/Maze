@@ -1,8 +1,8 @@
 # Maze 
 ## 3Dの迷路ゲーム
 ### マップ自動生成やりたかった。（穴掘り法）
-[マップ自動生成スクリプト](https://github.com/AraiKanta/Maze/blob/e04c15ae3e8da971ed905eec7cee5df5da6ba38d/Maze%20Project/Assets/Scripts/Manager/MazeGanerator.cs)
-[そのほかのスクリプト](https://github.com/AraiKanta/Maze/tree/main/Maze%20Project/Assets/Scripts)
+* [マップ自動生成スクリプト](https://github.com/AraiKanta/Maze/blob/e04c15ae3e8da971ed905eec7cee5df5da6ba38d/Maze%20Project/Assets/Scripts/Manager/MazeGanerator.cs)
+* [そのほかのスクリプト](https://github.com/AraiKanta/Maze/tree/main/Maze%20Project/Assets/Scripts)
 * プラットフォーム : Android
 * 開発環境 : Unity
 * 開発期間 : (チーム制作などもあり)3週間。(これからなにか追加するかも)
