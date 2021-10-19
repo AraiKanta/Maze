@@ -49,4 +49,4 @@ MonoBehaviour:
   m_player: {fileID: 4551172108483649608, guid: f84817448e745004bbfb893de5a0c6ee,
     type: 3}
   m_goal: {fileID: 4943673401620777027, guid: ff1c45837e95b964fa1663ab3633893e, type: 3}
-  m_key: {fileID: 3393829619504999075, guid: 84b935cbb19879944801a76c0d8d90ce, type: 3}
+  m_key: {fileID: 2071880617733319769, guid: 84b935cbb19879944801a76c0d8d90ce, type: 3}
